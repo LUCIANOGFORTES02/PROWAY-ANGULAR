@@ -9,19 +9,22 @@ import { NaoEncontradoComponent } from './nao-encontrado/nao-encontrado.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from "@angular/material/snack-bar"
 import { ProdutosComponent } from './produtos/produtos.component';
+import { BarraDePesquisaComponent } from './barra-de-pesquisa/barra-de-pesquisa.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,   
-    NaoEncontradoComponent
+    NaoEncontradoComponent, BarraDePesquisaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
