@@ -1,32 +1,6 @@
-# PROWAYCOMPUTERS
-URL da aplicação angular:  
-https://lucianogfortes02.github.io/PROWAY-ANGULAR/  
+# Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.10.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[https://metal-flea-041.notion.site/LIVE-Criando-Projeto-Angular-c83eefb9f4834a3295399b6d6d7d332b](https://www.notion.so/LIVE-Criando-Projeto-Angular-c83eefb9f4834a3295399b6d6d7d332b?pvs=21)
 
 O uso do this é necessário para distinguir a variável local do escopo do método e a propriedade da classe. O this.descricao é necessário para mostrar que você está acessando a propriedade da classe.
 
@@ -63,7 +37,6 @@ Pode opcionalmente criar alguns componentes e módulos básicos para ajudar a co
 5. **Configuração de um Servidor de Desenvolvimento:**
 Configura um servidor de desenvolvimento que pode ser usado para testar o aplicativo localmente enquanto você desenvolve.
 
-# PROWAY-ANGULAR
 ### Iniciar o projeto
 
 Para iniciar o projeto `npm start` que por de trás dos panos é o comando `ng server` 
@@ -1001,119 +974,34 @@ Neste exemplo, **`#nomeInput`** é uma variável de referência para o elemento 
 
 ## Formulários
 
-Em Angular, existem duas abordagens principais para lidar com formulários: formulários template-driven e formulários reativos (reactive forms). Vamos abordar ambos os conceitos.
+ReacvtiveFormsModule
 
-### **1. Formulários Template-Driven:**
+FormsBuilder
 
-Os formulários template-driven são mais simples e são construídos principalmente no template HTML. O Angular automaticamente rastreia e gerencia o estado do formulário. Alguns conceitos-chave incluem:
+formsGroup
 
-- **ngModel:** A diretiva **`ngModel`** é usada para criar vinculações bidirecionais entre elementos de formulário HTML e propriedades do componente.
-
-```html
-<!-- No template HTML -->
-<form #formulario="ngForm">
-  <input type="text" name="nome" [(ngModel)]="dados.nome" required />
-  <button (click)="enviarFormulario()">Enviar</button>
-</form>
-```
-
-- **#formulario:** A referência local **`#formulario`** é usada para acessar o estado do formulário no código do componente.
-- **ngForm:** A diretiva **`ngForm`** é usada para representar o formulário no template.
-
-### ****2. Formulários Reativos (Reactive Forms):****
-
-Os formulários reativos são construídos programaticamente usando classes TypeScript para representar o estado do formulário. Esta abordagem oferece maior controle e flexibilidade sobre a lógica do formulário. Alguns conceitos-chave incluem:
-
-- FormGroup e FormControl: `FormGroup` é uma coleção de controles (`FormControl`)e `FormControl` representa um único campo de formulário.
-
-Exemplo:
-
-```tsx
-// No código do componente TypeScript
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
-formularioReativo = new FormGroup({
-  nome: new FormControl('', Validators.required),
-  email: new FormControl('', [Validators.required, Validators.email]),
-});
-```
-
-- **Validators**: A classe `Validators` fornece validadores predefinidos para aplicar à entrada do usuário.
-- **formControlName:** A diretiva **`formControlName`** é usada para associar um controle específico a um campo no template.
-
-Exemplo:
-
-```html
-<!-- No template HTML -->
-<form [formGroup]="formularioReativo">
-  <input type="text" formControlName="nome" />
-  <input type="text" formControlName="email" />
-  <button (click)="enviarFormularioReativo()">Enviar</button>
-</form>
-```
-
-### ReacvtiveFormsModule
-
-É um modulo do angular que fornece suporte para construir formulários reativos (reactive forms). 
-
-### FormBuilder
-
-O **`FormBuilder`** é uma classe fornecida pelo módulo **`@angular/forms`** do Angular. Ele é usado para simplificar a criação e gerenciamento de formulários reativos em Angular.
-
-Exemplo de uso:
-
-```tsx
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-// ...
-
-constructor(private fb: FormBuilder) {
-  this.formGroup = this.fb.group({
-    nome: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    // ... outros controles do formulário
-  });
-}
-```
-
-- **`FormBuilder`** oferece um método chamado `group()` que permite criar instâncias de `FormGroup` de maneira mais concisa.
-- Você passa um objeto que define os controles do formulário e as validações associadas a esses controles.
-
-O uso do **`FormBuilder`** é opcional, e você pode criar instâncias de **`FormGroup`** e **`FormControl`** manualmente sem ele. O **`FormBuilder`** apenas fornece uma sintaxe mais concisa para configuração de formulários reativos.
+Validators
 
 formControlName → fazer a ligação
 
-### Class.valid e Class.invalid
+class.valid
 
-São conceitos frequntemente usados em Angular para aplicar estilos condicionalmente com base no estado de validação de um controle de formulário. Essas classes são usadas geralmente quando se trabalha com com formulários reativos e são aplicadas dinamicamente para refletir o estado do controle.
+class.invalid
 
-**class.valid:**
+Eventos que o formsContorl tem 
 
-A classe **`valid`** é adicionada a um elemento HTML quando um controle de formulário (como um **`FormControl`**, **`FormGroup`**, ou **`FormArray`**) atende a todas as condições de validação definidas para ele. No contexto de formulários reativos, você pode usar essa classe para estilizar visualmente os elementos que estão atualmente válidos.
-
-Exemplo:
-
-```html
-<!-- No template HTML -->
-<input formControlName="nome" [class.valid]="formContato.get('nome').valid" />
-```
-
-Neste exemplo, a classe **`valid`** é aplicada ao elemento **`input`** se o controle de formulário associado ao campo "nome" estiver atualmente válido.
-
-**class.invalid:**
-
-A classe **`invalid`** é adicionada a um elemento HTML quando um controle de formulário não atende a uma ou mais condições de validação definidas para ele. Assim como **`class.valid`**, a classe **`invalid`** é usada para aplicar estilos específicos a elementos que não estão em um estado válido.
-
-```html
-<!-- No template HTML -->
-<input formControlName="nome" [class.invalid]="formContato.get('nome').invalid" />
-```
-
-Neste exemplo, a classe **`invalid`** é aplicada ao elemento **`input`** se o controle de formulário associado ao campo "nome" não estiver atualmente válido.
-
-- Eventos que o formsContorl tem touched e dirty
-- biblioteca ngx-mask → utilizada para criar máscaras
+biblioteca ngx-mask
 
 ## Fazer o build da aplicação
 
-"outputPath": "dist/proway-computers", —>"outputPath": "docs".
+"outputPath": "dist/proway-computers", —>"outputPath": "docs",
+
+Url para que todos consigam acessar.
+
+git 
+
+comando para identificar
+
+git config —global [user.name](http://user.name) “Luciano”
+
+git config —global [user.](http://user.name)email lucianogfortes@gmail.com
